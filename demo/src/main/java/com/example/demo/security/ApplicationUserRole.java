@@ -9,7 +9,7 @@ public enum ApplicationUserRole {
     ADMIN(Sets.newHashSet(ApplicationUserPermission.COURSE_READ,
             ApplicationUserPermission.COURSE_READ,
             ApplicationUserPermission.STUDENT_READ,
-            ApplicationUserPermission.STUDENT_WRITE)); // Admin has all permissions
+            ApplicationUserPermission.STUDENT_WRITE)), ; // Admin has all permissions
 
     private final Set<ApplicationUserPermission> permissions;
 
