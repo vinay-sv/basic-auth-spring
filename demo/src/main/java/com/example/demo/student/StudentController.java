@@ -18,7 +18,7 @@ public class StudentController {
     );
 
     @GetMapping(path = "{studentId}")
-    public Student getStudent(@PathVariable("studentId") int studentId) {
+    public Student getStudent(@PathVariable("studentId") Integer studentId) {
         return STUDENTS.stream()
                 .filter(student -> student.getStudentId() == studentId)
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("Student " + studentId + " does not exist"));

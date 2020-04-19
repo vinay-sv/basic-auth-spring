@@ -12,8 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static com.example.demo.security.ApplicationUserRole.ADMIN;
-import static com.example.demo.security.ApplicationUserRole.STUDENT;
+import static com.example.demo.security.ApplicationUserRole.*;
 
 @Configuration
 @EnableWebSecurity
@@ -29,6 +28,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable() //TODO: Understand what this is for
                 .authorizeRequests()
                 .antMatchers( "/", "index", "/css/*", "/js/*") // "/" is the root page
                 .permitAll()// this makes sure we are whitelisting all the pages which is mentioned in the antmatchers
@@ -51,6 +51,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .username("admin1")
                 .password(passwordEncoder.encode("password"))
                 .roles(ADMIN.name()).build();
-        return new InMemoryUserDetailsManager(student, admin);
+        UserDetails adminTrainee = User.builder()
+                .username("adminTrainee1")
+                .password(passwordEncoder.encode("password"))
+                .roles(ADMINTRAINEE.name()).build();
+        return new InMemoryUserDetailsManager(student, admin, adminTrainee);
     }
 }
