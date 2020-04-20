@@ -37,8 +37,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf().disable() // When to use csrf - https://docs.spring.io/spring-security/site/docs/3.2.0.CI-SNAPSHOT/reference/html/csrf.html
                 // Below line will ensure that you can hit the apis with other clients than browser, for example postman etc.,
                 //You will get a csrf cookie as part of the response object from the GET request at the client end. Copy that and set it as a header on the server end for post, delete, put requests
-                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
+                //.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers( "/", "index", "/css/*", "/js/*") // "/" is the root page
                 .permitAll()// this makes sure we are whitelisting all the pages which is mentioned in the antmatchers
@@ -59,7 +59,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .httpBasic();
+                .formLogin()
+                .loginPage("/login").permitAll() // Allow the "login.html" page to be accessed by all
+                .defaultSuccessUrl("/courses", true); // This is the default landing page(courses.html) after successfull login
+
     }
 
     @Override
