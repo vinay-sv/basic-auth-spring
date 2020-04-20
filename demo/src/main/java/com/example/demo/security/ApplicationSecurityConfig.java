@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import static com.example.demo.security.ApplicationUserPermission.COURSE_WRITE;
 import static com.example.demo.security.ApplicationUserPermission.STUDENT_WRITE;
@@ -33,9 +34,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() //TODO: Understand what this is for
+                //.csrf().disable() // When to use csrf - https://docs.spring.io/spring-security/site/docs/3.2.0.CI-SNAPSHOT/reference/html/csrf.html
+                // Below line will ensure that you can hit the apis with other clients than browser, for example postman etc.,
+                //You will get a csrf cookie as part of the response object from the GET request at the client end. Copy that and set it as a header on the server end for post, delete, put requests
+                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .and()
                 .authorizeRequests()
-
                 .antMatchers( "/", "index", "/css/*", "/js/*") // "/" is the root page
                 .permitAll()// this makes sure we are whitelisting all the pages which is mentioned in the antmatchers
                 .antMatchers("/api/**")
