@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import ch.qos.logback.core.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import java.util.concurrent.TimeUnit;
 
 import static com.example.demo.security.ApplicationUserPermission.COURSE_WRITE;
 import static com.example.demo.security.ApplicationUserPermission.STUDENT_WRITE;
@@ -61,8 +64,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll() // Allow the "login.html" page to be accessed by all
-                .defaultSuccessUrl("/courses", true); // This is the default landing page(courses.html) after successfull login
-
+                .defaultSuccessUrl("/courses", true) // This is the default landing page(courses.html) after successfull login
+                .and()
+                //Here while dealing with sessions(NOT JWT), sessions have default expiration of 30min. rememberMe()[default = 2 weeks] helps increase that expiration time.
+                //rememberMe cookie contains username, expiration and md5 hash of username & expiration
+                //.rememberMe();
+                .rememberMe()// Here we are overriding the default value of rememberMe() of spring security
+                    .tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21))
+                    .key("Secure_Key_Has_To_Go_In_Here");
     }
 
     @Override
