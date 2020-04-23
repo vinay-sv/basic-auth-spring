@@ -1,0 +1,686 @@
+{
+	"info": {
+		"_postman_id": "905791b5-36c3-4918-9921-33747f632f41",
+		"name": "Spring security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "spring security using jwt",
+			"item": [
+				{
+					"name": "Login using localhost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"admin1\",\n\t\"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management api endpoint access",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"admin1\",\n\t\"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Management api add/register student",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"studentName\" : \"student2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/management/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"api",
+								"v1",
+								"students"
+							]
+						},
+						"description": "Management apis for the admins"
+					},
+					"response": []
+				},
+				{
+					"name": "Management api update student",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"studentName\" : \"student2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/management/api/v1/students/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"api",
+								"v1",
+								"students",
+								"2"
+							]
+						},
+						"description": "Management apis for the admins"
+					},
+					"response": []
+				},
+				{
+					"name": "Student api for the students Copy",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "student1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "username",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/students/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"2"
+							]
+						},
+						"description": "Authentication of basic service"
+					},
+					"response": []
+				},
+				{
+					"name": "Management api delete student",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/management/api/v1/students/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"api",
+								"v1",
+								"students",
+								"1"
+							]
+						},
+						"description": "Management apis for the admins"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Management api get all students",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/management/api/v1/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"management",
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Management apis for the admins"
+			},
+			"response": []
+		},
+		{
+			"name": "JWT Autenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"foo\",\n\t\"password\" : \"foo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hello world login",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Student api for the students",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "student1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/students/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"2"
+					]
+				},
+				"description": "Authentication of basic service"
+			},
+			"response": []
+		},
+		{
+			"name": "Management api add/register student",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"studentName\" : \"student2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/management/api/v1/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"management",
+						"api",
+						"v1",
+						"students"
+					]
+				},
+				"description": "Management apis for the admins"
+			},
+			"response": []
+		},
+		{
+			"name": "Management api update student",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"studentName\" : \"student2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/management/api/v1/students/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"management",
+						"api",
+						"v1",
+						"students",
+						"2"
+					]
+				},
+				"description": "Management apis for the admins"
+			},
+			"response": []
+		},
+		{
+			"name": "Management api delete student",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "admin1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/management/api/v1/students/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"management",
+						"api",
+						"v1",
+						"students",
+						"1"
+					]
+				},
+				"description": "Management apis for the admins"
+			},
+			"response": []
+		},
+		{
+			"name": "test cookie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdobeIO Prod",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ4NXUiOiJpbXNfbmExLXN0ZzEta2V5LTEuY2VyIiwiYWxnIjoiUlMyNTYifQ.eyJpZCI6IjE1NzU1MzgwNzM2NzVfYjdhYWI3ZjQtY2Y4Yi00OGE3LTk2NTktMDc5MGZhMTg0ZGUzX3VlMSIsImNsaWVudF9pZCI6Imxjc19tb2JpbGVfY29wczEiLCJ1c2VyX2lkIjoibGNzX21vYmlsZV9jb3BzMUBBZG9iZUlEIiwidHlwZSI6ImFjY2Vzc190b2tlbiIsImFzIjoiaW1zLW5hMS1zdGcxIiwicGFjIjoibGNzX21vYmlsZV9jb3BzMV9zdGciLCJydGlkIjoiMTU3NTUzODA3MzY3NV82OTRmMGFlYi1lMjYyLTRmYTAtYTMxYi02M2ZmZjg5NjRiNGZfdWUxIiwicnRlYSI6IjE1NzY3NDc2NzM2NzUiLCJtb2kiOiJiNzg1OTE5OCIsImMiOiJ5cjhFWmxZTFkwY0pQb1hvcmJKd1dnPT0iLCJleHBpcmVzX2luIjoiODY0MDAwMDAiLCJzY29wZSI6InN5c3RlbSxvcGVuaWQsQWRvYmVJRCIsImNyZWF0ZWRfYXQiOiIxNTc1NTM4MDczNjc1In0.dhDGQpkiAzrXTdArKMxdwdDW4a_18QURaB98YWuEuEJUVF3Odd4mjLnEOXErjNcaUhZ74z0iHKM-3P45sNmr0fhAug1UyGBSI_TUGF4dlX_JlFH0YV0w8DDU9pNCq7lkhYcJi8j_Nrvb0SpZHSpTHy-FDLQTYkqmj8hpgBp8ehRoNwLsHnwNqWD5myoX-Za2fyaUlW7oQI0ULBNQtIfAAqn2mfppNXvXBRgY5PLYj6swUMa-8Mov1BUqCGo0LCaudQd_pIlCzuy8_DXcEZiP-Ps742aMA2PaQt12I3KtY4hiQOL7Jt-h10dzbwEqD-hrb_8ujoVyRvQG98kUxJAEIw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "8f6a4854-5c26-4129-b408-f0cb02951d65"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "x-api-key",
+						"value": "lcs_cops1_test"
+					},
+					{
+						"key": "x-gw-ims-country-code",
+						"value": "US",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-display-name",
+						"value": "tester tester",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-email",
+						"value": "ngltest1@adobetest.com",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-first-name",
+						"value": "tester",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-last-name",
+						"value": "tester",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-user-id",
+						"value": "996739BA5A30B8550A49413B@AdobeID",
+						"disabled": true
+					},
+					{
+						"key": "x-gw-ims-user-account-type",
+						"value": "type1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"deviceTokenHash\": \"0295ca6bb4a0c0f4ce7541fa552459a4b449e6e754c03fd9612adc70cddc7fc77c3b2b1a28ccdc44afcf9a56f3140d77c6f6d1658450189ecfad6ec0d9236dc\",\n    \"appDetails\": {\n        \"appId\": \"RocketIOS1\",\n        \"appVersion\": \"1.7\",\n        \"appProfileScope\": \"creative_cloud\",\n        \"currentMobileProfileId\": \"686ebfcc-ba5a-43fe-c576-96fb23ff9afd\",\n        \"locale\": \"en_US\"\n    },\n    \"deviceDetails\": {\n        \"deviceId\": \"5cadc9bbc6e6bba399c4447bd995144c6b8c58e1669595ba830dec8133b27aab\",\n        \"deviceName\": \"purushot\",\n        \"osName\": \"IOS\",\n        \"osVersion\": \"12.0.1\",\n        \"currentDate\": \"2017-03-07T15:45:15.950+0530\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8200/mobile_profile/nul/v1",
+					"host": [
+						"localhost"
+					],
+					"port": "8200",
+					"path": [
+						"mobile_profile",
+						"nul",
+						"v1"
+					]
+				},
+				"description": "Mobile profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Mobile with headers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ4NXUiOiJpbXNfbmExLXN0ZzEta2V5LTEuY2VyIiwiYWxnIjoiUlMyNTYifQ.eyJpZCI6IjE1NzMxMTE2MDAzNTdfN2UyMmY1MmMtYzRjNi00ZWRhLWFlYjMtNDE0Njc1NDVkZDYxX3VlMSIsImNsaWVudF9pZCI6IkFuZHJvaWRTZGtUZXN0QXBwMSIsInVzZXJfaWQiOiI4MEUzMzUyODVDQzZDQUMxMEE0OTQxMTRAQWRvYmVJRCIsInN0YXRlIjoiIiwidHlwZSI6ImFjY2Vzc190b2tlbiIsImFzIjoiaW1zLW5hMS1zdGcxIiwiZmciOiJUNUhQNEI3UlhSWklGNlZUSlVTTUlMSUFIVT09PT09PSIsInJ0aWQiOiIxNTczMTExNjAwMzU3X2Y3YjI0OTY2LWNlNTUtNDM2Ni1iZDM5LTQ4MTViMjQ3MGZiYl91ZTEiLCJkdGlkIjoiMTU3MzExMTU5OTAwOV8zMTc1OTcyZS0zNjA2LTQzODMtOGE1MC1lYjg5NTExNWZjMGJfdWUxIiwicnRlYSI6IjE1NzMxMTIyMDAzNTciLCJtb2kiOiJjZTI2YzA1OSIsImMiOiJ0OWlKU2VWNlNpWWVzMEdneC9sY1RBPT0iLCJleHBpcmVzX2luIjoiODY0MDAwMDAiLCJzY29wZSI6ImNyZWF0aXZlX3NkayxBZG9iZUlELHNhby5jY2VfcHJpdmF0ZSIsImNyZWF0ZWRfYXQiOiIxNTczMTExNjAwMzU3In0.NqiZkswGu3qCMYzJBPK0SuCP-i-5u2CFmLqu2kCo48-aazgnH8J5CTetvnoS2Dsv54qtZHyr_jhe1DMgkfyN7zrniwdZ2Is-xV0QTPKE2WcT0xU1OhkimkgCBMrVL-iOg-jIkMXQE2A1FnLH72sKSVwQM46LX5W85PlMhxDQ1QPiT8XfRd5n-7GQGcsRt9Q4EF87LZk3EJCOolwHLep2lajBjg9oOJhgQrNpcqDZ7I7xAW40hQqw6uQuM5-5JtGMHuPG7DUNo3XfwfNMa0xuRzBRs5XyuEbpzZZcSmQd4GEziAbJhv_VDWoFdg-0VTIK6woCiHVOM11_bINzGZneHg"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Postman-Token",
+						"value": "8f6a4854-5c26-4129-b408-f0cb02951d65"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "x-api-key",
+						"value": "lcs_cops1_test"
+					},
+					{
+						"key": "x-gw-ims-country-code",
+						"value": "US"
+					},
+					{
+						"key": "x-gw-ims-display-name",
+						"value": "tester tester"
+					},
+					{
+						"key": "x-gw-ims-email",
+						"value": "ngltest2@adobetest.com"
+					},
+					{
+						"key": "x-gw-ims-first-name",
+						"value": "tester"
+					},
+					{
+						"key": "x-gw-ims-last-name",
+						"value": "tester"
+					},
+					{
+						"key": "x-gw-ims-user-id",
+						"value": "385545915D8B328B0A49423D@AdobeID"
+					},
+					{
+						"key": "x-gw-ims-user-account-type",
+						"type": "text",
+						"value": "type1"
+					},
+					{
+						"key": "x-request-id",
+						"type": "text",
+						"value": "test",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"deviceTokenHash\": \"53016b117cd55fefd3696e7c6410d0f4faf1b3a62a2b22a5ebbf075f195adfb5c31e4586f44c0db3d1b63c2789084c0f1b5cb9952fc3961d4ef7040c5a88ab7a\",\n\t\"appDetails\": {\n\t\t\"appId\": \"RocketIOS1\",\n\t\t\"appVersion\": \"0.9.2010-64-SNAPSHOT\",\n\t\t\"locale\": \"en_US\"\n\t},\n\t\"deviceDetails\": {\n\t\t\"deviceId\": \"36F75739DE9957797285C04502276A3D9397E5C5165ACDC0BBDA42F22F7347AB\",\n\t\t\"deviceName\": \"Google Pixel 3\",\n\t\t\"osName\": \"ANDROID\",\n\t\t\"osVersion\": \"9\",\n\t\t\"currentDate\": \"2019-11-07T15:53:36.686+0530\"\n\t},\n\t\"workflowResult\": {\n\t\t\"id\": \"restore_purchase\",\n\t\t\"instanceId\": \"adc6467f-0c1c-4d07-a5e1-a89d6952d5c0\",\n\t\t\"response\": \"purchase_completed=true&workflow_type=RESTORED_PURCHASE&transaction_identifier=lcefjbihibodfdnomlhddkbb.AO-J1OxZojwBHGYEqM177ECzIDCq33FJbZ2KHOGZA5VJRmFLJUm9aoAYjcPHwxMXSsjClZbsOBiPNsFLuze-xI8XsJouui2ql3i4n9o1g4AVkpvfRv1Th4xJ9Z1ob-NwktIeEbwxyJTAIfQm4mc-zuzVhulnH25RRnGhvhOvCjYXD9QKFuu6upQ&product_id=com.adobe.creativesdk.sample.aishwarya.weekly&source=ANDROID_APP_STORE\",\n\t\t\"version\": \"1\",\n\t\t\"type\": \"APP_STORE_WORKFLOW\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "https://lcs-mobile-cops-dev-ue1.adobe.io/mobile_profile/nul/v2",
+					"protocol": "https",
+					"host": [
+						"lcs-mobile-cops-dev-ue1",
+						"adobe",
+						"io"
+					],
+					"path": [
+						"mobile_profile",
+						"nul",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
